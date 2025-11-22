@@ -1,4 +1,3 @@
-"""Medical text classifier using Hugging Face transformers"""
 import time
 from typing import Dict, List, Tuple
 import torch
