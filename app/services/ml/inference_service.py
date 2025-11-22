@@ -1,14 +1,13 @@
-"""ML model inference service with advanced features"""
 import asyncio
 import time
 from typing import List, Dict, Optional, Tuple
 from concurrent.futures import ThreadPoolExecutor
-import numpy as np
+import numpy as np # type: ignore
 from app.models.classifier import classifier
-from app.ml_models.ensemble_model import EnsembleClassifier
+# from app.ml_models.ensemble_model import EnsembleClassifier
 from app.core.cache.memory_cache import MemoryCache
 from app.utils.logger import logger
-from app.utils.exceptions import PredictionError
+# from app.utils.exceptions import PredictionError
 
 
 class InferenceService:
