@@ -6,7 +6,6 @@ from app.core.config import settings
 from app.utils.logger import logger
 from app.utils.exceptions import ModelLoadError, PredictionError
 
-
 class MedicalTextClassifier:
     """
     Medical text sentiment classifier using pre-trained transformer model.
@@ -57,7 +56,7 @@ class MedicalTextClassifier:
                 "sentiment-analysis",
                 model=self.model,
                 tokenizer=self.tokenizer,
-                device=0 if self.device == "cuda" else -1,
+                device=0 if self.device == "cuda" else - 1,
                 top_k=None  # Return scores for all labels
             )
 
