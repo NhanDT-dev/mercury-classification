@@ -1,0 +1,383 @@
+{
+  "info": {
+    "name": "Medical Text Classification API",
+    "description": "Complete API testing collection for Medical Text Classification Service",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "version": "1.0.0"
+  },
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "value",
+        "value": "demo-api-key-12345",
+        "type": "string"
+      },
+      {
+        "key": "key",
+        "value": "X-API-Key",
+        "type": "string"
+      }
+    ]
+  },
+  "item": [
+    {
+      "name": "Health Checks",
+      "item": [
+        {
+          "name": "Root Endpoint",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/",
+              "host": ["{{base_url}}"],
+              "path": [""]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Health Check",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/health",
+              "host": ["{{base_url}}"],
+              "path": ["health"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Status",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/status",
+              "host": ["{{base_url}}"],
+              "path": ["status"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Authentication",
+      "item": [
+        {
+          "name": "Get JWT Token - Demo User",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "var jsonData = pm.response.json();",
+                  "pm.environment.set(\"jwt_token\", jsonData.access_token);"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"demo_user\",\n  \"password\": \"demo_password\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/v1/auth/token",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "auth", "token"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get JWT Token - Test User",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"test_user\",\n  \"password\": \"test_password\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/v1/auth/token",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "auth", "token"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Verify Token",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{jwt_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/v1/auth/verify",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "auth", "verify"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Predictions",
+      "item": [
+        {
+          "name": "Single Prediction - Positive",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"text\": \"The patient responded very well to the treatment and shows significant improvement.\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/v1/predict/single",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "predict", "single"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Single Prediction - Negative",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"text\": \"Patient experienced severe adverse reactions and complications during treatment.\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/v1/predict/single",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "predict", "single"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Single Prediction - Medical Review",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"text\": \"The doctor was very professional and thorough. I felt confident in the diagnosis and treatment plan.\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/v1/predict/single",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "predict", "single"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Batch Prediction",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"texts\": [\n    \"The treatment was very effective and I recovered quickly.\",\n    \"Experienced severe side effects that lasted for weeks.\",\n    \"Recovery is progressing as expected with no complications.\",\n    \"The medication helped reduce symptoms significantly.\",\n    \"Unfortunately, the treatment did not work as hoped.\"\n  ]\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/v1/predict/batch",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "predict", "batch"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Model Info",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/v1/predict/model-info",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "predict", "model-info"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Error Cases",
+      "item": [
+        {
+          "name": "Invalid Auth - No API Key",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"text\": \"This should fail without API key\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/v1/predict/single",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "predict", "single"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Invalid Auth - Wrong API Key",
+          "request": {
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "value",
+                  "value": "invalid-key",
+                  "type": "string"
+                },
+                {
+                  "key": "key",
+                  "value": "X-API-Key",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"text\": \"This should fail with invalid key\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/v1/predict/single",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "predict", "single"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Validation Error - Empty Text",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"text\": \"\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/v1/predict/single",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "predict", "single"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Validation Error - Empty Batch",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"texts\": []\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/v1/predict/batch",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "predict", "batch"]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:8000",
+      "type": "string"
+    }
+  ]
+}

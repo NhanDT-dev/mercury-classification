@@ -1,0 +1,24 @@
+{
+  "training_info": {
+    "trained_at": "2024-01-15T10:30:00Z",
+    "training_duration_hours": 12.5,
+    "total_epochs": 20,
+    "best_epoch": 15,
+    "dataset_size": 50000,
+    "validation_split": 0.2
+  },
+  "performance_metrics": {
+    "accuracy": 0.954,
+    "precision": 0.951,
+    "recall": 0.948,
+    "f1_score": 0.949,
+    "auc_roc": 0.982
+  },
+  "model_architecture": {
+    "base_model": "distilbert-base-uncased",
+    "num_parameters": 66000000,
+    "hidden_size": 768,
+    "num_layers": 6,
+    "num_attention_heads": 12
+  }
+}

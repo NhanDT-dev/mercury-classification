@@ -1,0 +1,11 @@
+openapi: 3.0.0
+info:
+  title: Medical Text Classifier API
+  version: 1.0.0
+  description: AI-powered medical text classification service
+paths:
+  /api/v1/predict/single:
+    post:
+      summary: Single text prediction
+      tags:
+        - Predictions

@@ -1,0 +1,10 @@
+{
+  "model_name": "distilbert-base-uncased-finetuned-sst-2-english",
+  "num_labels": 2,
+  "max_length": 512,
+  "hidden_size": 768,
+  "num_attention_heads": 12,
+  "num_hidden_layers": 6,
+  "dropout": 0.1,
+  "version": "1.0.0"
+}

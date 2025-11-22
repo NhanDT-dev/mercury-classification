@@ -1,0 +1,1 @@
+"""Analytics data aggregation job"""

@@ -1,0 +1,1 @@
+"""Prediction request schemas"""

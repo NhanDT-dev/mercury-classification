@@ -1,0 +1,25 @@
+{
+  "models": {
+    "distilbert-sst2": {
+      "name": "distilbert-base-uncased-finetuned-sst-2-english",
+      "type": "sentiment-analysis",
+      "size_mb": 268,
+      "accuracy": 0.954,
+      "download_url": "https://huggingface.co/distilbert-base-uncased-finetuned-sst-2-english"
+    },
+    "medbert": {
+      "name": "medicalai/med-bert-base",
+      "type": "medical-text-classification",
+      "size_mb": 420,
+      "accuracy": 0.923,
+      "download_url": "https://huggingface.co/medicalai/med-bert-base"
+    },
+    "biobert": {
+      "name": "dmis-lab/biobert-base-cased-v1.1",
+      "type": "biomedical-nlp",
+      "size_mb": 450,
+      "accuracy": 0.937,
+      "download_url": "https://huggingface.co/dmis-lab/biobert-base-cased-v1.1"
+    }
+  }
+}

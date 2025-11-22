@@ -1,0 +1,10 @@
+{
+  "model_name": "bert-base-uncased",
+  "num_labels": 3,
+  "max_length": 512,
+  "hidden_size": 768,
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "dropout": 0.1,
+  "version": "2.0.0"
+}

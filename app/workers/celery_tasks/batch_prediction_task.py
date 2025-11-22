@@ -1,0 +1,1 @@
+"""Batch prediction Celery task"""
